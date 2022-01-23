@@ -14,3 +14,18 @@ test("central cell neighbours", () => {
     BR: 23,
   });
 });
+
+test("top left wrapping cell neighbours", () => {
+  const organismCells = organismModel();
+  const cellNumber: number = 1;
+  expect(organismCells[cellNumber - 1].nbrs).toEqual({
+    TL: 30,
+    T: 25,
+    TR: 26,
+    L: 6,
+    R: 2,
+    BL: 6,
+    B: 7,
+    BR: 8,
+  });
+});
