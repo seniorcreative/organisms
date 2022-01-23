@@ -2,7 +2,7 @@ import organismModel from "./organismModel";
 
 test("central cell neighbours", () => {
   const organismCells = organismModel();
-  const cellNumber = 16;
+  const cellNumber: number = 16;
   expect(organismCells[cellNumber - 1].nbrs).toEqual({
     TL: 9,
     T: 10,
