@@ -1,4 +1,4 @@
-import organismModel from "./organismModel";
+import organismModel from "../organismModel";
 
 test("central cell neighbours", () => {
   const organismCells = organismModel();
