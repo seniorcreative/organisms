@@ -1,22 +1,5 @@
 // HELLO I AM THE START OF THE ORGANISM DATA MODEL
-
-type OrganismNeighbours = {
-  TL: number;
-  T: number;
-  TR: number;
-  L: number;
-  R: number;
-  BL: number;
-  B: number;
-  BR: number;
-};
-
-type OrganismCell = {
-  x: number;
-  row: number;
-  col: number;
-  nbrs: OrganismNeighbours;
-};
+import { OrganismCellType } from "./types/organismTypes";
 
 const OrganismModel = () => {
   // Stage 1.
@@ -70,12 +53,12 @@ const OrganismModel = () => {
         : x - (ROWS - 1) * COLS + 1
       : x + COLS + 1;
 
-  const organismCellData: OrganismCell[] = [];
+  const organismCellData: OrganismCellType[] = [];
 
   let row: number = 1;
   let col: number = 1;
   for (let x: number = 1; x <= ROWS * COLS; x++) {
-    const newOrganismCell: OrganismCell = {
+    const newOrganismCell: OrganismCellType = {
       row,
       col,
       x,
