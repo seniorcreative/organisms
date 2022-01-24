@@ -14,10 +14,19 @@ export type OrganismCellType = {
   row: number;
   col: number;
   nbrs: OrganismNeighboursType;
+  alive: boolean;
+};
+
+export type OrganismCellPropsType = {
+  x: number;
+  row: number;
+  col: number;
+  nbrs: OrganismNeighboursType;
+  alive: boolean;
+  toggleAlive: Function;
 };
 
 export type OrganismGridType = {
   rows: number;
   cols: number;
-  organisms: OrganismCellType[];
 };

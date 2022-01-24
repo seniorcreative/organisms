@@ -1,4 +1,6 @@
-import organismModel from "../organismModel";
+import organismModel from "../models/organismModel";
+
+// Tests are for a grid of 5 rows x 6 cols
 
 test("central cell neighbours", () => {
   const organismCells = organismModel();

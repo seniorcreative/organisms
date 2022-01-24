@@ -1,5 +1,8 @@
 // HELLO I AM THE START OF THE ORGANISM DATA MODEL
-import { OrganismCellType } from "./types/organismTypes";
+import { OrganismCellType } from "../types/organismTypes";
+
+const ROWS: number = 10;
+const COLS: number = 12;
 
 const OrganismModel = () => {
   // Stage 1.
@@ -9,10 +12,6 @@ const OrganismModel = () => {
   L  | x | R
   BL | B | BR
   */
-  // TODO: Hook these up with organism state context
-  const ROWS: number = 5;
-  const COLS: number = 6;
-
   const getTL = (row: number, col: number, x: number) =>
     row === 1
       ? col === 1
@@ -72,6 +71,7 @@ const OrganismModel = () => {
         B: getB(row, col, x),
         BR: getBR(row, col, x),
       },
+      alive: false,
     };
     organismCellData.push(newOrganismCell);
     col++;
