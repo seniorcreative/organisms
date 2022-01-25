@@ -4,24 +4,29 @@ import OrganismModel from "../models/organismModel";
 import { useState } from "react";
 
 const OrganismGrid = (props: OrganismGridType) => {
-  const [organisms, setOrganisms] = useState(OrganismModel(10, 12));
+  const ROWS: number = 12;
+  const COLS: number = 12;
+  const [organisms, setOrganisms] = useState(OrganismModel(ROWS, COLS));
 
   const toggleAliveMethod = (x: number) => {
     organisms[x - 1].alive = !organisms[x - 1].alive;
     setOrganisms([...organisms]);
   };
 
-  // - A Cell with 2 or 3 live neighbours lives on to the next generation.
-  // - A Cell with more than 3 live neighbours dies of overcrowding.
+  // -
   // - An empty Cell with exactly 3 live neighbours "comes to life".
   // - A Cell who "comes to life" outside the board should wrap at the other side of the board.
 
+  const deaths: number[] = [];
+  const births: number[] = [];
   const cycle = () => {
     // ALIVE CELLS
     const aliveCells: OrganismCellType[] = organisms.filter(
       (organism: OrganismCellType) => organism.alive
     );
-    // RULE 1 - A Cell with fewer than two live neighbours dies of under-population.
+    // RULES
+    // - A Cell with fewer than two live neighbours dies of under-population.
+    // - A Cell with more than 3 live neighbours dies of overcrowding.
     aliveCells.forEach((organism: OrganismCellType) => {
       const aliveNeighbours: number = Object.keys(organism.nbrs).filter(
         (neighbourKey: any) =>
@@ -30,12 +35,51 @@ const OrganismGrid = (props: OrganismGridType) => {
       console.log(
         `alive organism ${organism.x} has ${aliveNeighbours} alive neighbours`
       );
+      if (aliveNeighbours < 2 || aliveNeighbours > 3) {
+        deaths.push(organism.x);
+      }
     });
+
+    // DEAD CELLS
+    const deadCells: OrganismCellType[] = organisms.filter(
+      (organism: OrganismCellType) => !organism.alive
+    );
+
+    // RULES
+    // - A Cell with fewer than two live neighbours dies of under-population.
+    // - A Cell with more than 3 live neighbours dies of overcrowding.
+    deadCells.forEach((organism: OrganismCellType) => {
+      const aliveNeighbours: number = Object.keys(organism.nbrs).filter(
+        (neighbourKey: any) =>
+          organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
+      ).length;
+      console.log(
+        `dead organism ${organism.x} has ${aliveNeighbours} alive neighbours`
+      );
+      if (aliveNeighbours === 3) {
+        births.push(organism.x);
+      }
+    });
+
+    // Loop over the deaths
+    deaths.forEach((x: number) => {
+      organisms[x - 1].alive = false;
+    });
+    // Loop over the births
+    births.forEach((x: number) => {
+      organisms[x - 1].alive = true;
+    });
+
+    setOrganisms([...organisms]);
+  };
+
+  const reset = () => {
+    setOrganisms(OrganismModel(ROWS, COLS));
   };
 
   return (
     <>
-      <div className="grid grid-flow-row grid-rows-10 grid-cols-12 h-screen">
+      <div className={`grid grid-flow-row grid-rows-12 grid-cols-12`}>
         {organisms.map((organism: OrganismCellType) => (
           <OrganismCell
             key={organism.x}
@@ -58,7 +102,13 @@ const OrganismGrid = (props: OrganismGridType) => {
         >
           Next
         </button>
-        <button type="button" className="text-lime-500 p-2">
+        <button
+          type="button"
+          className="text-lime-500 p-2"
+          onClick={() => {
+            reset();
+          }}
+        >
           Reset
         </button>
       </div>

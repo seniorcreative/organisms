@@ -8,11 +8,7 @@ const OrganismModel = (ROWS: number = 5, COLS: number = 6) => {
   BL | B | BR
   */
   const getTL = (row: number, col: number, x: number) =>
-    row === 1
-      ? col === 1
-        ? ROWS * COLS
-        : x - 1 + (ROWS - 1) * COLS
-      : x - 1 - COLS;
+    row === 1 ? (col === 1 ? ROWS * COLS : x - 1 + (ROWS - 1) * COLS) : x - 1;
 
   const getT = (row: number, col: number, x: number) =>
     row === 1 ? x + (ROWS - 1) * COLS : x - COLS;
@@ -35,6 +31,8 @@ const OrganismModel = (ROWS: number = 5, COLS: number = 6) => {
       ? col === 1
         ? x - 1 - (ROWS - 1) * COLS + COLS
         : x - 1 - (ROWS - 1) * COLS
+      : col === 1
+      ? x - 1 + COLS + COLS
       : x - 1 + COLS;
 
   const getB = (row: number, col: number, x: number) =>
@@ -45,6 +43,8 @@ const OrganismModel = (ROWS: number = 5, COLS: number = 6) => {
       ? col === COLS
         ? x - ROWS * COLS + 1
         : x - (ROWS - 1) * COLS + 1
+      : col === COLS
+      ? x + 1
       : x + COLS + 1;
 
   const organismCellData: OrganismCellType[] = [];
