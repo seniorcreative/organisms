@@ -1,11 +1,6 @@
-// HELLO I AM THE START OF THE ORGANISM DATA MODEL
 import { OrganismCellType } from "../types/organismTypes";
 
-const ROWS: number = 10;
-const COLS: number = 12;
-
-const OrganismModel = () => {
-  // Stage 1.
+const OrganismModel = (ROWS: number = 5, COLS: number = 6) => {
   // Input of my algorithm worked out on pen and paper and graffiti
   /*
   TL | T | TR

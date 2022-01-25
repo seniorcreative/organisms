@@ -3,7 +3,7 @@ import organismModel from "../models/organismModel";
 // Tests are for a grid of 5 rows x 6 cols
 
 test("central cell neighbours", () => {
-  const organismCells = organismModel();
+  const organismCells = organismModel(5, 6);
   const cellNumber: number = 16;
   expect(organismCells[cellNumber - 1].nbrs).toEqual({
     TL: 9,
