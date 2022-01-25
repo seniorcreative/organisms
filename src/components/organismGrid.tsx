@@ -35,7 +35,7 @@ const OrganismGrid = (props: OrganismGridType) => {
 
   return (
     <>
-      <div className="grid grid-flow-row grid-rows-10 grid-cols-12 gap-1 h-screen">
+      <div className="grid grid-flow-row grid-rows-10 grid-cols-12 h-screen">
         {organisms.map((organism: OrganismCellType) => (
           <OrganismCell
             key={organism.x}
