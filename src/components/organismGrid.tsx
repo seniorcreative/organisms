@@ -13,8 +13,6 @@ const OrganismGrid = (props: OrganismGridType) => {
     setOrganisms([...organisms]);
   };
 
-  // -
-  // - An empty Cell with exactly 3 live neighbours "comes to life".
   // - A Cell who "comes to life" outside the board should wrap at the other side of the board.
 
   const deaths: number[] = [];
@@ -32,9 +30,6 @@ const OrganismGrid = (props: OrganismGridType) => {
         (neighbourKey: any) =>
           organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
-      console.log(
-        `alive organism ${organism.x} has ${aliveNeighbours} alive neighbours`
-      );
       if (aliveNeighbours < 2 || aliveNeighbours > 3) {
         deaths.push(organism.x);
       }
@@ -46,16 +41,12 @@ const OrganismGrid = (props: OrganismGridType) => {
     );
 
     // RULES
-    // - A Cell with fewer than two live neighbours dies of under-population.
-    // - A Cell with more than 3 live neighbours dies of overcrowding.
+    // - An empty Cell with exactly 3 live neighbours "comes to life".
     deadCells.forEach((organism: OrganismCellType) => {
       const aliveNeighbours: number = Object.keys(organism.nbrs).filter(
         (neighbourKey: any) =>
           organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
-      console.log(
-        `dead organism ${organism.x} has ${aliveNeighbours} alive neighbours`
-      );
       if (aliveNeighbours === 3) {
         births.push(organism.x);
       }
@@ -79,7 +70,9 @@ const OrganismGrid = (props: OrganismGridType) => {
 
   return (
     <>
-      <div className={`mt-6   p-3 grid grid-flow-row grid-rows-12 grid-cols-12`}>
+      <div
+        className={`mt-6   p-3 grid grid-flow-row grid-rows-12 grid-cols-12`}
+      >
         {organisms.map((organism: OrganismCellType) => (
           <OrganismCell
             key={organism.x}
