@@ -79,7 +79,7 @@ const OrganismGrid = (props: OrganismGridType) => {
 
   return (
     <>
-      <div className={`grid grid-flow-row grid-rows-12 grid-cols-12`}>
+      <div className={`mt-6   p-3 grid grid-flow-row grid-rows-12 grid-cols-12`}>
         {organisms.map((organism: OrganismCellType) => (
           <OrganismCell
             key={organism.x}
@@ -92,10 +92,10 @@ const OrganismGrid = (props: OrganismGridType) => {
           ></OrganismCell>
         ))}
       </div>
-      <div className="container text-center">
+      <div className="container flex flex-col items-center py-4">
         <button
           type="button"
-          className="rounded p-3 rounded-2 bg-slate-100 text-xl text-black"
+          className="rounded p-2 rounded-2 bg-slate-100 w-1/4 text-xl text-black"
           onClick={() => {
             cycle();
           }}
