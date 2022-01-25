@@ -1,3 +1,5 @@
+// NB - the keys in OrganismNeighboursType are used as neigbourKeys
+// OrganismNeighboursType items as objects for filtering
 export type OrganismNeighboursType = {
   TL: number;
   T: number;

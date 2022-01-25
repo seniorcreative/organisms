@@ -24,7 +24,8 @@ const OrganismGrid = (props: OrganismGridType) => {
     // RULE 1 - A Cell with fewer than two live neighbours dies of under-population.
     aliveCells.forEach((organism: OrganismCellType) => {
       const aliveNeighbours: number = Object.keys(organism.nbrs).filter(
-        (K: any) => organisms[Object(organism.nbrs)[K] - 1].alive
+        (neighbourKey: any) =>
+          organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
       console.log(
         `alive organism ${organism.x} has ${aliveNeighbours} alive neighbours`
