@@ -11,7 +11,14 @@ const OrganismGrid = (props: OrganismGridType) => {
   const toggleAliveMethod = (x: number) => {
     organisms[x - 1].alive = !organisms[x - 1].alive;
     setOrganisms([...organisms]);
+    // ALIVE CELLS
+    const aliveCells: OrganismCellType[] = organisms.filter(
+      (organism: OrganismCellType) => organism.alive
+    );
+    setAliveCellCount(aliveCells.length);
   };
+
+  const [aliveCellCount, setAliveCellCount] = useState(0);
 
   // - A Cell who "comes to life" outside the board should wrap at the other side of the board.
 
@@ -68,6 +75,7 @@ const OrganismGrid = (props: OrganismGridType) => {
 
   const reset = () => {
     setOrganisms(OrganismModel(props.rows, props.cols));
+    setAliveCellCount(0);
   };
 
   const gridClasses = `
@@ -98,16 +106,30 @@ const OrganismGrid = (props: OrganismGridType) => {
       <div className="container flex flex-col items-center py-4">
         <button
           type="button"
-          className="rounded p-2 rounded-2 bg-slate-100 w-1/4 text-xl text-black"
+          className="rounded p-2 
+          rounded-2 
+          bg-gray-200 
+          disabled:bg-gray-600
+          w-1/2 
+          text-2xl 
+          md:w-1/3
+          md:text-xl 
+          text-black"
+          disabled={aliveCellCount === 0}
           onClick={() => {
             cycle();
           }}
         >
-          Next
+          {aliveCellCount === 0 ? "Select Cells" : "Next Cycle"}
         </button>
         <button
           type="button"
-          className="text-lime-500 p-2"
+          className="
+          text-lime-500 
+          text-xl
+          p-3 
+          disabled:hidden"
+          disabled={aliveCellCount === 0}
           onClick={() => {
             reset();
           }}
