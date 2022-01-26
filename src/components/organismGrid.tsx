@@ -30,9 +30,7 @@ const OrganismGrid = (props: OrganismGridType) => {
         (neighbourKey: any) =>
           organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
-      console.log(
-        `alive ${organism.x} has ${aliveNeighbours} alive neighbours`
-      );
+      // console.log(`alive ${organism.x} has ${aliveNeighbours} alive neighbours`);
       if (aliveNeighbours < 2 || aliveNeighbours > 3) {
         deaths.push(organism.x);
       }
@@ -50,7 +48,7 @@ const OrganismGrid = (props: OrganismGridType) => {
         (neighbourKey: any) =>
           organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
-      console.log(`dead ${organism.x} has ${aliveNeighbours} alive neighbours`);
+      // console.log(`dead ${organism.x} has ${aliveNeighbours} alive neighbours`);
       if (aliveNeighbours === 3) {
         births.push(organism.x);
       }
@@ -72,7 +70,15 @@ const OrganismGrid = (props: OrganismGridType) => {
     setOrganisms(OrganismModel(props.rows, props.cols));
   };
 
-  const gridClasses = `mt-6 p-3 grid grid-flow-row grid-rows-${props.rows} grid-cols-${props.cols}`;
+  const gridClasses = `
+  mt-6 
+  p-3 
+  grid 
+  gap-1
+  md:gap-2
+  grid-flow-row 
+  grid-rows-${props.rows} 
+  grid-cols-${props.cols}`;
 
   return (
     <>
