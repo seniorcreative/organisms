@@ -12,7 +12,7 @@ const OrganismCell = (props: OrganismCellPropsType) => {
     >
       <div
         className={`cursor-pointer w-12 h-12 rounded-full transition transition-all flex items-center justify-center select-none ${
-          alive ? "bg-lime-500" : "bg-zinc-900"
+          alive ? "bg-lime-500" : "bg-zinc-700"
         }`}
       >
         {/* {props.x} */}

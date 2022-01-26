@@ -12,6 +12,8 @@ const OrganismModel = (ROWS: number = 5, COLS: number = 6) => {
       ? col === 1
         ? ROWS * COLS
         : x - 1 + (ROWS - 1) * COLS
+      : col === 1
+      ? x - 1
       : x - 1 - COLS;
 
   const getT = (row: number, col: number, x: number) =>
@@ -37,6 +39,8 @@ const OrganismModel = (ROWS: number = 5, COLS: number = 6) => {
       ? col === 1
         ? x - 1 - (ROWS - 1) * COLS + COLS
         : x - 1 - (ROWS - 1) * COLS
+      : col === 1 && row > 1
+      ? x - 1 + COLS + COLS
       : x - 1 + COLS;
 
   const getB = (row: number, col: number, x: number) =>

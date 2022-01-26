@@ -4,9 +4,9 @@ import OrganismModel from "../models/organismModel";
 import { useState } from "react";
 
 const OrganismGrid = (props: OrganismGridType) => {
-  const ROWS: number = 12;
-  const COLS: number = 12;
-  const [organisms, setOrganisms] = useState(OrganismModel(ROWS, COLS));
+  const [organisms, setOrganisms] = useState(
+    OrganismModel(props.rows, props.cols)
+  );
 
   const toggleAliveMethod = (x: number) => {
     organisms[x - 1].alive = !organisms[x - 1].alive;
@@ -30,6 +30,9 @@ const OrganismGrid = (props: OrganismGridType) => {
         (neighbourKey: any) =>
           organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
+      console.log(
+        `alive ${organism.x} has ${aliveNeighbours} alive neighbours`
+      );
       if (aliveNeighbours < 2 || aliveNeighbours > 3) {
         deaths.push(organism.x);
       }
@@ -47,6 +50,7 @@ const OrganismGrid = (props: OrganismGridType) => {
         (neighbourKey: any) =>
           organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
+      console.log(`dead ${organism.x} has ${aliveNeighbours} alive neighbours`);
       if (aliveNeighbours === 3) {
         births.push(organism.x);
       }
@@ -65,14 +69,14 @@ const OrganismGrid = (props: OrganismGridType) => {
   };
 
   const reset = () => {
-    setOrganisms(OrganismModel(ROWS, COLS));
+    setOrganisms(OrganismModel(props.rows, props.cols));
   };
+
+  const gridClasses = `mt-6 p-3 grid grid-flow-row grid-rows-${props.rows} grid-cols-${props.cols}`;
 
   return (
     <>
-      <div
-        className={`mt-6   p-3 grid grid-flow-row grid-rows-12 grid-cols-12`}
-      >
+      <div id="organismGrid" className={gridClasses}>
         {organisms.map((organism: OrganismCellType) => (
           <OrganismCell
             key={organism.x}
