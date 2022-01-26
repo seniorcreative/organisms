@@ -1,7 +1,5 @@
 import organismModel from "../models/organismModel";
 
-// Tests are for a grid of 5 rows x 6 cols
-
 test("central cell neighbours", () => {
   const organismCells = organismModel(5, 6);
   const cellNumber: number = 16;
@@ -17,8 +15,8 @@ test("central cell neighbours", () => {
   });
 });
 
-test("top left wrapping cell neighbours", () => {
-  const organismCells = organismModel();
+test("top left corner wrapping cell neighbours", () => {
+  const organismCells = organismModel(5, 6);
   const cellNumber: number = 1;
   expect(organismCells[cellNumber - 1].nbrs).toEqual({
     TL: 30,
@@ -33,16 +31,31 @@ test("top left wrapping cell neighbours", () => {
 });
 
 test("right side wrapping cell neighbours", () => {
-  const organismCells = organismModel();
-  const cellNumber: number = 12;
+  const organismCells = organismModel(5, 6);
+  const cellNumber: number = 24;
   expect(organismCells[cellNumber - 1].nbrs).toEqual({
-    TL: 5,
-    T: 6,
-    TR: 7,
-    L: 11,
-    R: 7,
-    BL: 17,
-    B: 18,
-    BR: 19,
+    TL: 17,
+    T: 18,
+    TR: 13,
+    L: 23,
+    R: 19,
+    BL: 29,
+    B: 30,
+    BR: 25,
+  });
+});
+
+test("bottom cell neighbours", () => {
+  const organismCells = organismModel(5, 6);
+  const cellNumber: number = 27;
+  expect(organismCells[cellNumber - 1].nbrs).toEqual({
+    TL: 20,
+    T: 21,
+    TR: 22,
+    L: 26,
+    R: 28,
+    BL: 2,
+    B: 3,
+    BR: 4,
   });
 });
