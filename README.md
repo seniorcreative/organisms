@@ -23,7 +23,7 @@ https://www.dropbox.com/s/oprnbp0bis34714/organisms-workbook.pdf?dl=0
 - Allow to drag over cells to bring them to life rather than clicking each one individually.
 - Build in a screen test for a set viewport size with a pre-determined selection that checks that the following screen is the expected evolution. This would prove the logic.
 - Build in randomization / seeding in the model generator that sets some cells to be alive from the start.
-- Move logic controls out of the Organism grid component into a more central controller and use a Context to link that with the Model
+- Move logic controls out of the Organism grid component into a more central controller and use a Context to link that with the Model.
 - Expand from using TailwindCSS (which I did for rapid prototype dev as I am busy with other work) to use a pure CSS Grid which has unlimited row and column support.
 
 ### Instructions
