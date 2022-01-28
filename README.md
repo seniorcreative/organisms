@@ -43,5 +43,4 @@ There are two test suites:
 - OrganismModel - Check that for grid rows 10 and cols 12 produces cells with the right values for their neighbour cells. In this particular test it is important to test a central cell, and cells in corners and on sides to make sure wrapping points to the right neighbour cells.
 - GridComponent - Check that the created `<OrganismGrid>` grid wrapper has classes which match the number of grid rows and cols in the model, because cells will exist that do not have a matching counterpart in the model.
 
-`npm test` Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm test` Launches the test runner in the interactive watch mode.
