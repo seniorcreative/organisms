@@ -18,8 +18,8 @@ https://www.dropbox.com/s/oprnbp0bis34714/organisms-workbook.pdf?dl=0
 
 ### Ideas...
 
-- Allow to change Rows and Cols Dynamically.
-- Build in Auto-Cycle.
+- Allow to change Rows and Cols dynamically.
+- Build in Auto-Cycle to just let it run.
 - Allow to drag over cells to bring them to life rather than clicking each one individually.
 - Build in a screen test for a set viewport size with a pre-determined selection that checks that the following screen is the expected evolution. This would prove the logic.
 - Build in randomization / seeding in the model generator that sets some cells to be alive from the start.
