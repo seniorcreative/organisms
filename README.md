@@ -4,7 +4,7 @@
 
 https://beyond-organisms.herokuapp.com/
 
-# My approach to solving a problem like this is as follows :
+### My approach to solving a problem like this was...
 
 It's tempting to dive into code straight away for a fun challenge like this. But from my work with design and systems thinking, This is exactly what I haven't done in creating a solution.
 
@@ -26,9 +26,9 @@ https://www.dropbox.com/s/oprnbp0bis34714/organisms-workbook.pdf?dl=0
 - Move logic controls out of the Organism grid component into a more central controller and use a Context to link that with the Model
 - Expand from using TailwindCSS (which I did for rapid prototype dev as I am busy with other work) to use a pure CSS Grid which has unlimited row and column support.
 
-## Instructions
+### Instructions
 
-### As per the normal create-react-app commands, to run... `npm serve`, `npm build`
+As per the normal create-react-app commands, to run... `npm serve`, `npm build`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -36,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### To run tests... `npm test`
+### To test...
 
 There are two test suites:
 
