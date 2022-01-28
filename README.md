@@ -4,9 +4,9 @@
 
 https://beyond-organisms.herokuapp.com/
 
-### My approach to solving a problem like this was...
+### My approach to solving this challenge was...
 
-It's tempting to dive into code straight away for a fun challenge like this. But from my work with design and systems thinking, This is exactly what I haven't done in creating a solution.
+It's tempting to dive into code straight away for a fun challenge like this. But from my work with design and systems thinking, This is exactly what I haven't done...
 
 I initially started out thinking that the organisms ought to be self-aware of their surrounding cells and could be bestowed with a ruleset to know what to do. But as I sketched things out, I realised that in combination with a grid of containers for the cells that needs to wrap, that would be problematic. After a few sketches, on paper, on a wall, and some walks in nature, I realised there's an algorithm that gives me a list of all the neighbours around each cell, for an entire grid. So that's the core of this app and is generated first. I wrote a test to check that this model array is producing the right values.
 
