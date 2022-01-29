@@ -25,6 +25,7 @@ https://www.dropbox.com/s/oprnbp0bis34714/organisms-workbook.pdf?dl=0
 - Build in randomization / seeding in the model generator that sets some cells to be alive from the start.
 - Move logic controls out of the Organism grid component into a more central controller and use a Context to link that with the Model.
 - Expand from using TailwindCSS (which I did for rapid prototype dev as I am busy with other work) to use a pure CSS Grid which has unlimited row and column support.
+- History mode to allow to go back to start and see which early cell formations evolved in a cool pattern
 
 ### Instructions
 
