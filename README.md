@@ -2,7 +2,7 @@
 
 ## Demo
 
-https://belong-organisms.herokuapp.com/
+https://organisms.vercel.app/
 
 ### My approach to solving this challenge was...
 
