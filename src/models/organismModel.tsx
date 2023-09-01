@@ -1,6 +1,9 @@
 import { OrganismCellType } from "../types/organismTypes";
 
-const OrganismModel = (ROWS: number = 5, COLS: number = 6) => {
+const OrganismModel = (
+  ROWS: number = 5,
+  COLS: number = 6
+): OrganismCellType[] => {
   // Input of my algorithm worked out on pen and paper and graffiti
   /*
   TL | T | TR

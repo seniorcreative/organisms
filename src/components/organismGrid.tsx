@@ -1,7 +1,8 @@
+import { useState } from "react";
+
 import { OrganismGridType, OrganismCellType } from "../types/organismTypes";
 import OrganismCell from "./organismCell";
 import OrganismModel from "../models/organismModel";
-import { useState } from "react";
 
 const OrganismGrid = (props: OrganismGridType) => {
   const [organisms, setOrganisms] = useState(
@@ -21,7 +22,6 @@ const OrganismGrid = (props: OrganismGridType) => {
   const [aliveCellCount, setAliveCellCount] = useState(0);
 
   // - A Cell who "comes to life" outside the board should wrap at the other side of the board.
-
   const deaths: number[] = [];
   const births: number[] = [];
   const cycle = () => {
@@ -37,7 +37,6 @@ const OrganismGrid = (props: OrganismGridType) => {
         (neighbourKey: any) =>
           organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
-      // console.log(`alive ${organism.x} has ${aliveNeighbours} alive neighbours`);
       if (aliveNeighbours < 2 || aliveNeighbours > 3) {
         deaths.push(organism.x);
       }
@@ -55,7 +54,6 @@ const OrganismGrid = (props: OrganismGridType) => {
         (neighbourKey: any) =>
           organisms[Object(organism.nbrs)[neighbourKey] - 1].alive
       ).length;
-      // console.log(`dead ${organism.x} has ${aliveNeighbours} alive neighbours`);
       if (aliveNeighbours === 3) {
         births.push(organism.x);
       }
@@ -90,7 +88,7 @@ const OrganismGrid = (props: OrganismGridType) => {
 
   return (
     <>
-      <div id="organismGrid" className={gridClasses}>
+      <div data-testid="organismGrid" className={gridClasses}>
         {organisms.map((organism: OrganismCellType) => (
           <OrganismCell
             key={organism.x}
@@ -106,6 +104,7 @@ const OrganismGrid = (props: OrganismGridType) => {
       <div className="container flex flex-col items-center py-4">
         <button
           type="button"
+          data-testid="btnCycle"
           className="rounded p-2 
           rounded-2 
           bg-gray-200 

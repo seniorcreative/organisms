@@ -5,12 +5,14 @@ const OrganismCell = (props: OrganismCellPropsType) => {
 
   return (
     <div
+      data-testid="cell-outer"
       className="flex justify-center items-center"
       onClick={() => {
         props.toggleAlive(props.x);
       }}
     >
       <div
+        data-testid="cell-inner"
         className={`cursor-pointer 
         w-6 
         h-6
@@ -25,7 +27,7 @@ const OrganismCell = (props: OrganismCellPropsType) => {
         select-none 
         ${alive ? "bg-lime-500" : "bg-zinc-700"}`}
       >
-        {/* {props.x} */}
+        {}
       </div>
     </div>
   );
