@@ -28,7 +28,7 @@ describe("Organism grid test suite", () => {
 
   test("The element should have zinc class because it is not alive", async () => {
     render(<OrganismCell {...defaultProps} />);
-    const orgCell = await screen.findByTestId("cell-inner");
+    const orgCell = await screen.findByTestId("cell-inner-dead");
     expect(orgCell).toHaveClass("bg-zinc-700");
   });
 });

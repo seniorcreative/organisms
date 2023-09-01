@@ -12,7 +12,7 @@ const OrganismCell = (props: OrganismCellPropsType) => {
       }}
     >
       <div
-        data-testid="cell-inner"
+        data-testid={`cell-inner-${alive ? "alive" : "dead"}`}
         className={`cursor-pointer 
         w-6 
         h-6

@@ -115,13 +115,12 @@ const OrganismGrid = (props: OrganismGridType) => {
           md:text-xl 
           text-black"
           disabled={aliveCellCount === 0}
-          onClick={() => {
-            cycle();
-          }}
+          onClick={cycle}
         >
           {aliveCellCount === 0 ? "Select Cells" : "Next Cycle"}
         </button>
         <button
+          data-testid="btnReset"
           type="button"
           className="
           text-lime-500 
@@ -129,9 +128,7 @@ const OrganismGrid = (props: OrganismGridType) => {
           p-3 
           disabled:hidden"
           disabled={aliveCellCount === 0}
-          onClick={() => {
-            reset();
-          }}
+          onClick={reset}
         >
           Reset
         </button>

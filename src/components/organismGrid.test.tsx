@@ -28,16 +28,62 @@ describe("Organism grid test suite", () => {
     render(<OrganismGrid rows={6} cols={6} />);
     const button = await screen.findByTestId("btnCycle");
     expect(button).toBeInTheDocument();
+    fireEvent(
+      button,
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
   });
 
-  test("Organism grid has correct number of cells", async () => {
+  test("Organism grid has correct number of cells, toggles 3, then shows reset", async () => {
     render(<OrganismGrid rows={6} cols={6} />);
     const cells = await screen.findAllByTestId("cell-outer");
     expect(cells).toHaveLength(36);
 
     const firstCell = cells[0];
+    const secondCell = cells[1];
+    const thirdCell = cells[2];
+
     fireEvent(
       firstCell,
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+    fireEvent(
+      secondCell,
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+    fireEvent(
+      thirdCell,
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+
+    const alivecells = await screen.findAllByTestId("cell-inner-alive");
+    expect(alivecells).toHaveLength(3);
+
+    const button = await screen.findByTestId("btnCycle");
+    fireEvent(
+      button,
+      new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      })
+    );
+
+    const resetButton = await screen.findByTestId("btnReset");
+    expect(resetButton).toBeInTheDocument();
+    fireEvent(
+      resetButton,
       new MouseEvent("click", {
         bubbles: true,
         cancelable: true,
