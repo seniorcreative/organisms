@@ -1,29 +1,28 @@
 {
   "name": "organisms",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.0",
     "@types/node": "^16.11.21",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
+    "serve-static": "^1.14.1",
     "typescript": "^4.5.5",
-    "web-vitals": "^2.1.4",
-    "express": "^4.17.1",
-    "serve-static": "^1.14.1"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "postinstall": "npm run build",
     "start": "node server.js",
     "serve": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^29.5.4",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.15"
