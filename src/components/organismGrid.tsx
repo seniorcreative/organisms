@@ -4,6 +4,8 @@ import { OrganismGridType, OrganismCellType } from "../types/organismTypes";
 import OrganismCell from "./organismCell";
 import OrganismModel from "../models/organismModel";
 
+let TimeoutFn: NodeJS.Timeout;
+
 const OrganismGrid = (props: OrganismGridType) => {
   const [organisms, setOrganisms] = useState(
     OrganismModel(props.rows, props.cols)
@@ -30,7 +32,6 @@ const OrganismGrid = (props: OrganismGridType) => {
   };
 
   const [aliveCellCount, setAliveCellCount] = useState(0);
-
   // - A Cell who "comes to life" outside the board should wrap at the other side of the board.
   const deaths: number[] = [];
   const births: number[] = [];
@@ -79,9 +80,19 @@ const OrganismGrid = (props: OrganismGridType) => {
     });
 
     setOrganisms([...organisms]);
+
+    const finalAliveCells: OrganismCellType[] = organisms.filter(
+      (organism: OrganismCellType) => organism.alive
+    );
+    if (finalAliveCells.length > 0) {
+      TimeoutFn = setTimeout(() => {
+        cycle();
+      }, 250);
+    }
   };
 
   const reset = () => {
+    clearTimeout(TimeoutFn);
     setOrganisms(OrganismModel(props.rows, props.cols));
     setAliveCellCount(0);
   };
@@ -91,14 +102,19 @@ const OrganismGrid = (props: OrganismGridType) => {
   p-3 
   grid 
   gap-1
-  md:gap-2
-  grid-flow-row 
-  grid-rows-${props.rows} 
-  grid-cols-${props.cols}`;
+  md:gap-1
+  grid-flow-row`;
 
   return (
     <>
-      <div data-testid="organismGrid" className={gridClasses}>
+      <div
+        data-testid="organismGrid"
+        style={{
+          gridTemplateRows: `repeat(${props.rows}, minmax(0, 1fr))`,
+          gridTemplateColumns: `repeat(${props.cols}, minmax(0, 1fr))`,
+        }}
+        className={gridClasses}
+      >
         {organisms.map((organism: OrganismCellType) => (
           <OrganismCell
             key={organism.x}
