@@ -87,7 +87,7 @@ const OrganismGrid = (props: OrganismGridType) => {
     if (finalAliveCells.length > 0) {
       TimeoutFn = setTimeout(() => {
         cycle();
-      }, 250);
+      }, 50);
     }
   };
 
@@ -144,7 +144,7 @@ const OrganismGrid = (props: OrganismGridType) => {
           disabled={aliveCellCount === 0}
           onClick={cycle}
         >
-          {aliveCellCount === 0 ? "Select Cells" : "Next Cycle"}
+          {aliveCellCount === 0 ? "Select Cells" : "Propagate"}
         </button>
         <button
           data-testid="btnReset"
