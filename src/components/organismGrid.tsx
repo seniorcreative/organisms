@@ -19,6 +19,16 @@ const OrganismGrid = (props: OrganismGridType) => {
     setAliveCellCount(aliveCells.length);
   };
 
+  const setAliveMethod = (x: number) => {
+    organisms[x - 1].alive = true;
+    setOrganisms([...organisms]);
+    // ALIVE CELLS
+    const aliveCells: OrganismCellType[] = organisms.filter(
+      (organism: OrganismCellType) => organism.alive
+    );
+    setAliveCellCount(aliveCells.length);
+  };
+
   const [aliveCellCount, setAliveCellCount] = useState(0);
 
   // - A Cell who "comes to life" outside the board should wrap at the other side of the board.
@@ -98,6 +108,7 @@ const OrganismGrid = (props: OrganismGridType) => {
             nbrs={organism.nbrs}
             alive={organism.alive}
             toggleAlive={toggleAliveMethod}
+            setAlive={setAliveMethod}
           ></OrganismCell>
         ))}
       </div>

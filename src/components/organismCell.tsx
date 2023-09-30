@@ -7,6 +7,11 @@ const OrganismCell = (props: OrganismCellPropsType) => {
     <div
       data-testid="cell-outer"
       className="flex justify-center items-center"
+      onMouseEnter={(m: React.MouseEvent) => {
+        if (m.buttons === 1) {
+          props.setAlive(props.x);
+        }
+      }}
       onClick={() => {
         props.toggleAlive(props.x);
       }}

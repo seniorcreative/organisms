@@ -24,6 +24,7 @@ describe("Organism grid test suite", () => {
     nbrs: defaultOrgNeighbours,
     alive: false,
     toggleAlive: () => {},
+    setAlive: () => {},
   };
 
   test("The element should have zinc class because it is not alive", async () => {

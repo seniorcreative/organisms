@@ -26,6 +26,7 @@ export type OrganismCellPropsType = {
   nbrs: OrganismNeighboursType;
   alive: boolean;
   toggleAlive: Function;
+  setAlive: Function;
 };
 
 export type OrganismGridType = {
