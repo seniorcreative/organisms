@@ -8,19 +8,24 @@ const OrganismCell = (props: OrganismCellPropsType) => {
       data-testid="cell-outer"
       className="flex justify-center items-center"
       onMouseEnter={(m: React.MouseEvent) => {
-        if (m.buttons === 1) {
-          props.setAlive(props.x);
-        }
+        //if (m.buttons === 1) {
+        props.setAlive(props.x);
+        //}
       }}
-      onClick={() => {
-        props.toggleAlive(props.x);
+      onPointerEnter={(m: React.MouseEvent) => {
+        // if (m.buttons === 1) {
+        props.setAlive(props.x);
+        // }
       }}
+      // onClick={() => {
+      //   props.toggleAlive(props.x);
+      // }}
     >
       <div
         data-testid={`cell-inner-${alive ? "alive" : "dead"}`}
         className={`cursor-pointer 
-        w-2 
-        h-2
+        w-3
+        h-3
         md:w-2
         md:h-2
         rounded-lg 
