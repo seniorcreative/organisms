@@ -4,7 +4,7 @@ import OrganismGrid from "./components/organismGrid";
 const App = () => {
   return (
     <div className="container mx-auto px-4">
-      <OrganismGrid rows={40} cols={25} />
+      <OrganismGrid rows={30} cols={25} />
     </div>
   );
 };
