@@ -1,4 +1,12 @@
-import { OrganismCellPropsType } from "../types/organismTypes";
+import {OrganismCellPropsType} from '../types/organismTypes';
+
+let mouseDown = 0;
+window.addEventListener('mousedown', () => {
+  mouseDown++;
+});
+window.addEventListener('mouseup', () => {
+  mouseDown--;
+});
 
 const OrganismCell = (props: OrganismCellPropsType) => {
   const alive: boolean = props.alive;
@@ -8,35 +16,36 @@ const OrganismCell = (props: OrganismCellPropsType) => {
       data-testid="cell-outer"
       className="flex justify-center items-center"
       onMouseEnter={(m: React.MouseEvent) => {
-        //if (m.buttons === 1) {
-        props.setAlive(props.x);
-        //}
+        if (mouseDown > 0) {
+          props.setAlive(props.x);
+        }
       }}
       onPointerEnter={(m: React.MouseEvent) => {
-        // if (m.buttons === 1) {
-        props.setAlive(props.x);
-        // }
+        if (mouseDown > 0) {
+          props.setAlive(props.x);
+        }
       }}
+
       // onClick={() => {
       //   props.toggleAlive(props.x);
       // }}
     >
       <div
-        data-testid={`cell-inner-${alive ? "alive" : "dead"}`}
+        data-testid={`cell-inner-${alive ? 'alive' : 'dead'}`}
         className={`cursor-pointer 
-        w-3
-        h-3
-        md:w-2
-        md:h-2
-        rounded-lg 
+        w-2
+        h-2
+        md:w-6
+        md:h-6
+        rounded-full
         transition 
         transition-all 
         flex 
         items-center 
         justify-center 
-        select-none 
-        ${alive ? "bg-lime-500" : "bg-zinc-700"}`}
-      >
+        select-none
+        border-1 md:border-2
+        ${alive ? 'bg-lime-500 border-green-600' : 'bg-zinc-700 border-slate-700'}`}>
         {}
       </div>
     </div>
