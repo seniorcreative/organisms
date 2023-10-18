@@ -20,15 +20,15 @@ const OrganismCell = (props: OrganismCellPropsType) => {
           props.setAlive(props.x);
         }
       }}
-      onPointerEnter={(m: React.MouseEvent) => {
-        if (mouseDown > 0) {
-          props.setAlive(props.x);
-        }
-      }}
-
-      // onClick={() => {
-      //   props.toggleAlive(props.x);
+      // onPointerEnter={(m: React.MouseEvent) => {
+      //   if (mouseDown > 0) {
+      //     props.setAlive(props.x);
+      //   }
       // }}
+
+      onClick={() => {
+        props.toggleAlive(props.x);
+      }}
     >
       <div
         data-testid={`cell-inner-${alive ? 'alive' : 'dead'}`}
